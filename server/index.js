@@ -24,6 +24,6 @@ authRoutes(app);
 const PORT = process.env.PORT;
 app.listen(PORT, (err) => {
   if (err) console.error("Error in server setup. Server not running.");
-  console.log("Server running on PORT: " + PORT);
-  console.log(`http://localhost:${PORT}`);
+  console.log(`\n\nYour backend server is now running on PORT:\t${PORT}`);
+  console.log(`\t\tOn Your Network: http://localhost:${PORT}\n\n`);
 });
