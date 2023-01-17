@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Payment from "./Payment";
 
 export default function Header() {
   const auth = useSelector((state) => state.auth.value);
@@ -16,12 +17,14 @@ export default function Header() {
         );
       default:
         return (
-          <div className="flex gap-2">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+          <div className="flex gap-3">
+            <h4 className="p-2 italic font-medium">Credits: {auth.credits}</h4>
+            <Payment />
+            <div className="avatar">
+              <div className="w-12 rounded-full">
                 <img src={auth.displayPictureLink} alt={auth.displayName} />
               </div>
-            </label>
+            </div>
             <a href="/api/logout" className="btn">
               Logout
             </a>

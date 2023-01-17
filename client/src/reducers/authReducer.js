@@ -7,8 +7,11 @@ const authSlice = createSlice({
     setAuth: (state, action) => {
       state.value = action.payload || false;
     },
+    handlePaymentToken: (state, action) => {
+      state.value = action.payload;
+    },
   },
 });
 
-export const { setAuth } = authSlice.actions;
+export const { setAuth, handlePaymentToken } = authSlice.actions;
 export default authSlice.reducer;
