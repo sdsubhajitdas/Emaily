@@ -18,7 +18,7 @@ export default function emailValidationSchema() {
           const firstInvalidEmail = emails
             .split(",")
             .map((email) => email.trim())
-            .filter((email) => email !== null || email !== "")
+            .filter((email) => email !== null && email !== "")
             .find((email) => !isEmailSchema.isValidSync(email));
 
           return !firstInvalidEmail

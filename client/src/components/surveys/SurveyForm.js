@@ -1,19 +1,23 @@
+import { useEffect } from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { setFormValues } from "../../reducers/surveyFormReducer";
+import { setAuth } from "../../reducers/authReducer";
+import axios from "axios";
 import NewSurvey from "./NewSurvey";
 import ReviewSurvey from "./ReviewSurvey";
 
 export default function SurveyForm() {
   let [page, setPage] = useState(1);
-  let history = useHistory();
+  let [sendingSurvey, setSendingSurvey] = useState(true);
+  const formValues = useSelector((state) => state.surveyForm.value);
   const dispatch = useDispatch();
   const HEADERS = [
     "",
     "Fill the form to create a new survey",
     "Almost there, make sure to review form",
-    "Sending",
+    "Sending......",
   ];
 
   function pageNext() {
@@ -24,18 +28,26 @@ export default function SurveyForm() {
     setPage((previousPage) => Math.max(1, previousPage - 1));
   }
 
-  function closeSurvey() {
-    // Clear the form values from redux and then navigate to different page
-    dispatch(
-      setFormValues({
-        title: "",
-        subject: "",
-        body: "",
-        recipients: "",
-      })
-    );
-    history.push("/surveys");
+  async function sendSurvey() {
+    pageNext();
+    const response = await axios.post("/api/survey", formValues);
+    dispatch(setAuth(response.data));
+    setSendingSurvey(false);
   }
+
+  useEffect(() => {
+    return () => {
+      // Clear the form values from redux on component unmount
+      dispatch(
+        setFormValues({
+          title: "",
+          subject: "",
+          body: "",
+          recipients: "",
+        })
+      );
+    };
+  }, [dispatch]);
 
   return (
     <div className="border-secondary rounded-xl border-2 p-4">
@@ -49,18 +61,33 @@ export default function SurveyForm() {
         max="3"
       />
 
-      {page === 1 && (
-        <NewSurvey closeSurvey={closeSurvey} pageNext={pageNext} />
-      )}
+      {page === 1 && <NewSurvey pageNext={pageNext} />}
       {page === 2 && (
-        <ReviewSurvey pagePrevious={pagePrevious} pageNext={pageNext} />
+        <ReviewSurvey pagePrevious={pagePrevious} sendSurvey={sendSurvey} />
       )}
 
       {page === 3 && (
-        <div className="flex justify-center">
-          <button className="btn btn-active my-10" onClick={closeSurvey}>
-            Return Home
-          </button>
+        <div className="flex flex-col">
+          {sendingSurvey && (
+            <div className="mx-auto mt-10">
+              <h3 className="text-center">📤 Your survey is being sent </h3>
+              <progress className="progress progress-success w-full my-10"></progress>
+            </div>
+          )}
+
+          {!sendingSurvey && (
+            <div className="mx-auto mt-10">
+              <h3 className="text-center">Survey sent out successfully</h3>
+            </div>
+          )}
+
+          <div className="flex justify-center">
+            <Link to="/surveys">
+              <button className="btn btn-active my-10" disabled={sendingSurvey}>
+                Return to Dashboard
+              </button>
+            </Link>
+          </div>
         </div>
       )}
     </div>

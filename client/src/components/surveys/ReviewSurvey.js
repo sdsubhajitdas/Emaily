@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import ReviewSurveyField from "./ReviewSurveyField";
 
-export default function ReviewSurvey({ pagePrevious, pageNext }) {
+export default function ReviewSurvey({ pagePrevious, sendSurvey }) {
   const FORM_FIELD_DETAILS = [
     {
       label: "Survey Title",
@@ -48,8 +48,8 @@ export default function ReviewSurvey({ pagePrevious, pageNext }) {
           Back
         </button>
 
-        <button className="btn btn-success my-5" onClick={pageNext}>
-          Submit
+        <button className="btn btn-success my-5" onClick={sendSurvey}>
+          Send Survey
         </button>
       </div>
     </div>

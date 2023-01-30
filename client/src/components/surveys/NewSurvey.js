@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSelector, useDispatch } from "react-redux";
@@ -5,7 +6,7 @@ import { setFormValues } from "../../reducers/surveyFormReducer";
 import SurveyField from "../surveys/SurveyField";
 import emailValidationSchema from "../../utils/emailValidationSchema";
 
-export default function NewSurvey({ pageNext, closeSurvey }) {
+export default function NewSurvey({ pageNext }) {
   const FORM_FIELD_DETAILS = [
     {
       label: "Survey Title",
@@ -64,7 +65,7 @@ export default function NewSurvey({ pageNext, closeSurvey }) {
         data.recipients
           .split(",")
           .map((email) => email.trim())
-          .filter((email) => email !== null || email !== "")
+          .filter((email) => email !== null && email !== "")
       )
     ).join(",");
     dispatch(setFormValues(data));
@@ -75,9 +76,9 @@ export default function NewSurvey({ pageNext, closeSurvey }) {
     <form onSubmit={handleSubmit(onSubmit)} className="form-control">
       {getFormInputFields(FORM_FIELD_DETAILS)}
       <div className="flex justify-between">
-        <button className="btn btn-error my-5" onClick={closeSurvey}>
-          Cancel
-        </button>
+        <Link to="/surveys">
+          <button className="btn btn-error my-5">Cancel</button>
+        </Link>
 
         <button className="btn btn-success my-5" type="submit">
           Next
