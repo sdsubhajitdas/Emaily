@@ -6,6 +6,8 @@ import axios from "axios";
 
 import Header from "./Header";
 import Landing from "./Landing";
+import Dashboard from "./Dashboard";
+import SurveyForm from "./surveys/SurveyForm";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -21,7 +23,11 @@ export default function App() {
       <BrowserRouter>
         <div>
           <Header />
-          <Route exact path="/" component={Landing} />
+          <div className="my-6 mx-3">
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route exact path="/surveys/new" component={SurveyForm} />
+          </div>
         </div>
       </BrowserRouter>
     </div>
