@@ -153,7 +153,7 @@ module.exports = (survey) => {
 
                                   <h1
                                     style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 24px; font-weight: 700; ">
-                                    I'd like your input on this 🤔</h1>
+                                    I'd like your feedback on this 🤔</h1>
 
                                 </td>
                               </tr>
