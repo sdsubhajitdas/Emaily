@@ -235,7 +235,7 @@ module.exports = (survey) => {
                                   <!--[if mso]><style>.v-button {background: transparent !important;}</style><![endif]-->
                                   <div align="center">
                                     <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://google.com" style="height:42px; v-text-anchor:middle; width:230px;" arcsize="12%"  stroke="f" fillcolor="#2dc26b"><w:anchorlock/><center style="color:#FFFFFF;font-family:arial,helvetica,sans-serif;"><![endif]-->
-                                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/survey/thanks" target="_blank"
+                                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/survey/${survey.id}/yes" target="_blank"
                                       class="v-button"
                                       style="box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #2dc26b; border-radius: 5px;-webkit-border-radius: 5px; -moz-border-radius: 5px; width:100%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 18px;">
                                       <span style="display:block;padding:10px 20px;line-height:120%;"><span
@@ -275,7 +275,7 @@ module.exports = (survey) => {
                                   <!--[if mso]><style>.v-button {background: transparent !important;}</style><![endif]-->
                                   <div align="center">
                                     <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://google.com" style="height:42px; v-text-anchor:middle; width:230px;" arcsize="12%"  stroke="f" fillcolor="#e03e2d"><w:anchorlock/><center style="color:#FFFFFF;font-family:arial,helvetica,sans-serif;"><![endif]-->
-                                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/survey/thanks" target="_blank"
+                                    <a href="${process.env.EMAIL_REDIRECT_DOMAIN}/api/survey/${survey.id}/no" target="_blank"
                                       class="v-button"
                                       style="box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #e03e2d; border-radius: 5px;-webkit-border-radius: 5px; -moz-border-radius: 5px; width:100%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 18px;">
                                       <span style="display:block;padding:10px 20px;line-height:120%;"><span
