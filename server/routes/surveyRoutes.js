@@ -11,6 +11,14 @@ require("dotenv").config();
 const Survey = mongoose.model("surveys");
 
 module.exports = (app) => {
+  app.get("/api/surveys", requireLogin, async (req, res) => {
+    const surveys = await Survey.find({ _user: req.user.id })
+      .select({ recipients: false })
+      .sort({ dateSent: "desc" });
+
+    res.send(surveys);
+  });
+
   app.get("/api/survey/:surveyId/:choice", (req, res) => {
     res.send("Thanks for your feedback");
   });
