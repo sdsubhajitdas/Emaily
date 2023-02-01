@@ -23,7 +23,7 @@ export default function App() {
       <BrowserRouter>
         <div>
           <Header />
-          <div className="my-6 mx-3">
+          <div className="my-12 mx-3">
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route exact path="/surveys/new" component={SurveyForm} />

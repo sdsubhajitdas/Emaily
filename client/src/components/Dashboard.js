@@ -1,11 +1,13 @@
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import SurveyList from "./SurveyList";
 
 export default function Dashboard() {
   return (
     <div>
-      <h1>Dashboard</h1>
-      <div className="bg-red-600 h-14 w-14 rounded-full	fixed bottom-20 right-40">
+      <h2 className="my-7 text-center">Dashboard</h2>
+      <SurveyList />
+      <div className="bg-secondary h-14 w-14 rounded-full	drop-shadow-2xl fixed lg:bottom-20 lg:right-40 bottom-10 right-10">
         <Link to="/surveys/new">
           <PlusIcon className="p-2.5 text-white" />
         </Link>
