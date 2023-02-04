@@ -3,21 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "clear && concurrently \"npm run server --prefix server\" \"npm run client --prefix client\""
+  "engines": {
+    "node": "18.13.0",
+    "npm": "8.19.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sdsubhajitdas/Emaily.git"
+  "scripts": {
+    "build": "npm install && cd client && npm install && npm run build",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "dev": "clear && concurrently \"npm run server\" \"npm run client --prefix client\""
   },
   "author": "Subhajit Das",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sdsubhajitdas/Emaily/issues"
-  },
-  "homepage": "https://github.com/sdsubhajitdas/Emaily#readme",
   "dependencies": {
-    "concurrently": "^7.6.0"
+    "body-parser": "1.20.1",
+    "cookie-session": "2.0.0",
+    "concurrently": "7.6.0",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "lodash": "4.17.21",
+    "mongoose": "6.8.3",
+    "nodemon": "2.0.20",
+    "passport": "0.5.3",
+    "passport-google-oauth20": "2.0.0",
+    "path-parser": "6.1.0",
+    "sendgrid": "5.2.3",
+    "stripe": "11.6.0"
   }
 }
