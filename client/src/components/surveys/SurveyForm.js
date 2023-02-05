@@ -11,6 +11,7 @@ import ReviewSurvey from "./ReviewSurvey";
 export default function SurveyForm() {
   let [page, setPage] = useState(1);
   let [sendingSurvey, setSendingSurvey] = useState(true);
+  let [error, setError] = useState(null);
   const formValues = useSelector((state) => state.surveyForm.value);
   const dispatch = useDispatch();
   const HEADERS = [
@@ -30,9 +31,25 @@ export default function SurveyForm() {
 
   async function sendSurvey() {
     pageNext();
-    const response = await axios.post("/api/survey", formValues);
-    dispatch(setAuth(response.data));
-    setSendingSurvey(false);
+    try {
+      const response = await axios.post("/api/survey", formValues);
+      dispatch(setAuth(response.data));
+    } catch (err) {
+      let errorObject = err.response.data;
+      let { error } = errorObject;
+      let errorMessage = error;
+
+      // Handling special case when Sendgrid API is disabled.
+      if (!error) {
+        let statusCode = errorObject.response.statusCode;
+        if (statusCode === 401) {
+          errorMessage = errorObject.response.body.errors[0].message;
+        }
+      }
+      setError(errorMessage);
+    } finally {
+      setSendingSurvey(false);
+    }
   }
 
   useEffect(() => {
@@ -51,6 +68,27 @@ export default function SurveyForm() {
 
   return (
     <div className="border-primary dark:border-secondary rounded-xl border-2 p-4">
+      {error && (
+        <div className="alert alert-error shadow-lg my-5">
+          <div className="dark:text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current flex-shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>{error}</span>
+          </div>
+        </div>
+      )}
+
       <span className="badge border-primary dark:border-secondary text-primary dark:text-secondary badge-lg badge-outline px-4 py-3">
         {HEADERS[page]}
       </span>
