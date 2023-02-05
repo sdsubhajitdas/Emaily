@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { setSurvey } from "../reducers/surveyReducer";
 import SurveyCard from "./SurveyCard";
 
 export default function SurveyList() {
   const surveys = useSelector((state) => state.survey.value);
+  const [triggerRefresh, setTriggerRefresh] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,6 +14,7 @@ export default function SurveyList() {
     axios
       .get("/api/surveys", { cancelToken: cancelToken.token })
       .then((response) => {
+        setTriggerRefresh(false);
         dispatch(setSurvey(response.data));
       })
       .catch((err) => {
@@ -22,11 +24,20 @@ export default function SurveyList() {
     return () => {
       cancelToken.cancel();
     };
-  }, [dispatch]);
+  }, [dispatch, triggerRefresh]);
+
+  async function deleteSurvey(surveyId) {
+    await axios.delete(`/api/survey/${surveyId}`);
+    setTriggerRefresh(true);
+  }
 
   function renderContent(surveys) {
     return surveys.map((survey) => (
-      <SurveyCard survey={survey} key={survey._id} />
+      <SurveyCard
+        survey={survey}
+        key={survey._id}
+        deleteSurvey={deleteSurvey}
+      />
     ));
   }
 
