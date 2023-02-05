@@ -33,11 +33,13 @@ export default function SurveyField({
   return (
     <div className="mb-2">
       <label className="label">
-        <span className="label-text text-white">{label}</span>
+        <span className="label-text dark:text-white">{label}</span>
       </label>
       {getRenderElement(elementType)}
       <label className={!error ? "hidden" : "label"}>
-        <span className="label-text-alt text-error">{error}</span>
+        <span className="label-text-alt text-red-700 dark:text-error">
+          {error}
+        </span>
       </label>
     </div>
   );

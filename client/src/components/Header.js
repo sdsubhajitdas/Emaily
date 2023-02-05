@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Payment from "./Payment";
+import ThemeToggler from "./ThemeToggler";
 
 export default function Header() {
   const auth = useSelector((state) => state.auth.value);
@@ -58,6 +59,7 @@ export default function Header() {
         </Link>
       </div>
       {renderContent()}
+      <ThemeToggler />
     </div>
   );
 }

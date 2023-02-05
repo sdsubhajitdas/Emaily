@@ -19,8 +19,9 @@ module.exports = {
     }),
     require("daisyui"),
   ],
+  darkMode: "class",
   daisyui: {
-    themes: ["light", "dark"],
+    themes: ["garden", "dark"],
     darkTheme: "dark",
   },
 };

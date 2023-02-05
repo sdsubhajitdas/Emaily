@@ -19,11 +19,11 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto bg-base-100">
       <BrowserRouter>
-        <div>
+        <div className="min-h-screen">
           <Header />
-          <div className="my-12 mx-3">
+          <div className="py-12 mx-3">
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route exact path="/surveys/new" component={SurveyForm} />
