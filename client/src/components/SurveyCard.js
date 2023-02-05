@@ -1,8 +1,11 @@
 import moment from "moment";
+import { useState } from "react";
 
 export default function SurveyCard({
-  survey: { title, subject, body, yes, no, dateSent, lastResponded },
+  survey: { _id, title, subject, body, yes, no, dateSent, lastResponded },
+  deleteSurvey,
 }) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const labelStyle = "text-sm text-secondary font-medium";
   const voted = !(yes === 0 && no === 0);
   dateSent = dateSent ? moment(dateSent).format("h:mm a, Do MMM YY") : null;
@@ -91,6 +94,32 @@ export default function SurveyCard({
               <p>Last responded at</p>
               <p>{lastResponded}</p>
             </div>
+          )}
+        </section>
+        <section className="flex flex-row-reverse mt-4 gap-3">
+          {!confirmDelete && (
+            <button
+              className="btn btn-sm btn-active btn-ghost"
+              onClick={() => setConfirmDelete((prev) => !prev)}
+            >
+              Delete
+            </button>
+          )}
+          {confirmDelete && (
+            <button
+              className="btn btn-sm btn-active btn-ghost"
+              onClick={() => setConfirmDelete((prev) => !prev)}
+            >
+              No
+            </button>
+          )}
+          {confirmDelete && (
+            <button
+              className="btn btn-sm btn-active btn-ghost"
+              onClick={() => deleteSurvey(_id)}
+            >
+              Yes
+            </button>
           )}
         </section>
       </div>
