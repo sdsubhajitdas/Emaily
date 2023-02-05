@@ -11,7 +11,8 @@ export default function ThemeToggler() {
   const [theme, setTheme] = useState(storedTheme);
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("class", theme);
   }, [theme]);
 
   function toggleTheme() {

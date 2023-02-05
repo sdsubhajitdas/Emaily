@@ -50,13 +50,13 @@ export default function SurveyForm() {
   }, [dispatch]);
 
   return (
-    <div className="border-secondary rounded-xl border-2 p-4">
-      <span className="badge badge-secondary badge-lg badge-outline px-4 py-3">
+    <div className="border-primary dark:border-secondary rounded-xl border-2 p-4">
+      <span className="badge border-primary dark:border-secondary text-primary dark:text-secondary badge-lg badge-outline px-4 py-3">
         {HEADERS[page]}
       </span>
 
       <progress
-        className="progress progress-secondary w-full px-5 mt-5"
+        className="progress progress-primary dark:progress-secondary w-full px-5 mt-5"
         value={page}
         max="3"
       />

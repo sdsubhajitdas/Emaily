@@ -44,11 +44,17 @@ export default function ReviewSurvey({ pagePrevious, sendSurvey }) {
     <div className="form-control">
       {getFormInputFields(FORM_FIELD_DETAILS)}
       <div className="flex justify-between">
-        <button className="btn btn-error my-5" onClick={pagePrevious}>
+        <button
+          className="btn btn-error my-5 dark:text-white"
+          onClick={pagePrevious}
+        >
           Back
         </button>
 
-        <button className="btn btn-success my-5" onClick={sendSurvey}>
+        <button
+          className="btn btn-success my-5 dark:text-white"
+          onClick={sendSurvey}
+        >
           Send Survey
         </button>
       </div>

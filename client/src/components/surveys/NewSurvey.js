@@ -77,10 +77,10 @@ export default function NewSurvey({ pageNext }) {
       {getFormInputFields(FORM_FIELD_DETAILS)}
       <div className="flex justify-between">
         <Link to="/surveys">
-          <button className="btn btn-error my-5">Cancel</button>
+          <button className="btn btn-error my-5 dark:text-white">Cancel</button>
         </Link>
 
-        <button className="btn btn-success my-5" type="submit">
+        <button className="btn btn-success my-5 dark:text-white" type="submit">
           Next
         </button>
       </div>
