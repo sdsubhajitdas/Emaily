@@ -58,3 +58,31 @@ REACT_APP_STRIPE_PUBLISH_KEY = <Stripe API publish key>
   ```
 
 - Setup redirect link in SendGrid dashboard
+  ![image](https://user-images.githubusercontent.com/20211573/217049587-3a124dbd-6bbb-449d-a390-2ac565c14f62.png)
+
+## Screenshots
+
+- Homepage
+  ![image](https://user-images.githubusercontent.com/20211573/217049989-684f8d19-67e2-4e9f-ae1a-fed24408b937.png)
+  
+- Dashboard
+  ![image](https://user-images.githubusercontent.com/20211573/217051339-d70b5504-5ce1-41c0-9f11-3b3cab98b2eb.png)
+  
+- Creating a new survey
+  ![image](https://user-images.githubusercontent.com/20211573/217050266-59478f4a-72ed-4bc7-92b9-8225476c3db1.png)
+
+- Reviewing a survey
+  ![image](https://user-images.githubusercontent.com/20211573/217050514-c04ca69d-d964-419f-b2e2-12bb3b14d958.png)
+
+- Successfully sending out survey 
+  ![image](https://user-images.githubusercontent.com/20211573/217050890-1d016d1d-57ef-477b-aef6-1ee68e18bce7.png)
+
+- Email that is being sent out
+  ![image](https://user-images.githubusercontent.com/20211573/217051129-ea198588-a27f-4c8b-a639-827c4ba30b38.png)
+
+- Toggling theme
+  ![image](https://user-images.githubusercontent.com/20211573/217051523-5b0d3025-ce3b-40fd-ba6d-6b6555e7fe57.png)
+
+- Adding credits to send out survey
+  ![image](https://user-images.githubusercontent.com/20211573/217051626-ca2381ef-aaba-4bc3-a861-bdbda3b54d58.png)
+  The Stripe API is in testing mode since so you can use any of the [Stripe testing cards](https://stripe.com/docs/testing?testing-method=card-numbers#visa) to do a successfull transaction.
